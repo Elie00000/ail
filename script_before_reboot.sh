@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Passer en root
-sudo su
 
 # Mettre à jour le système
 apt update && apt full-upgrade -y
