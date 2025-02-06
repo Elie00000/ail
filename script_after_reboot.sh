@@ -21,7 +21,7 @@ git clone https://github.com/ail-project/lacus.git
 cd lacus
 poetry install
 poetry shell
-playwright install-deps
+poetry run playwright install-deps
 
 # Configurer LACUS_HOME
 echo LACUS_HOME="`pwd`" >> .env
