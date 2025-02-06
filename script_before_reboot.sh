@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # Passer en root
+if [ "$EUID" -ne 0 ]; then
+  echo "Veuillez exécuter ce script en tant que root."
+  exit 1
+fi
 
 # Mettre à jour le système
 apt update && apt full-upgrade -y
@@ -14,19 +18,18 @@ cd ail-framework
 
 # Installer les dépendances
 ./installing_deps.sh
-echo "Installation de ail terminer"
+echo "Installation de AIL terminée"
+
 # Vérifier si le répertoire AILENV est présent et activer l'environnement virtuel
 if [ -d "./AILENV/bin" ]; then
-  echo "Installation vérifié et réussie"
+  echo "Installation vérifiée et réussie"
 else
   echo "Le répertoire AILENV n'a pas été trouvé. Veuillez vérifier l'installation."
   exit 1
 fi
 
 # Naviguer dans le répertoire bin et lancer AIL
-cd ~/ail-framework/
-cd bin/
-./LAUNCH.sh -l
+cd ~/ail-framework/bin && ./LAUNCH.sh -l
 sleep 120
 ./LAUNCH.sh -k
 
