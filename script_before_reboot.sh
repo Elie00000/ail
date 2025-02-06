@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Passer en root
-if [ "$EUID" -ne 0 ]; then
-  echo "Veuillez exécuter ce script en tant que root."
-  exit 1
-fi
-
 # Mettre à jour le système
 apt update && apt full-upgrade -y
 
