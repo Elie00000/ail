@@ -1,20 +1,14 @@
 #!/bin/bash
 
-# Mettre à jour le système
 apt update && apt full-upgrade -y
-
-# Installer les paquets nécessaires
 apt install git build-essential tcl pipx -y
 
-# Cloner le dépôt ail-framework
 git clone https://github.com/ail-project/ail-framework.git
 cd ail-framework
 
-# Installer les dépendances
 ./installing_deps.sh
 echo "Installation de AIL terminée"
 
-# Vérifier si le répertoire AILENV est présent et activer l'environnement virtuel
 if [ -d "./AILENV/bin" ]; then
   echo "Installation vérifiée et réussie"
 else
@@ -22,13 +16,10 @@ else
   exit 1
 fi
 
-# Naviguer dans le répertoire bin et lancer AIL
 cd ~/ail-framework/bin && ./LAUNCH.sh -l
 sleep 120
 ./LAUNCH.sh -k
 
-# Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
-# Redémarrer le système
 reboot
