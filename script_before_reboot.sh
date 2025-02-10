@@ -3,9 +3,6 @@
 # Trouver le nom de l'utilisateur non-root
 username=$(logname)
 
-# Passer en root
-sudo su
-
 # Mettre à jour le système
 apt update && apt full-upgrade -y
 
