@@ -34,7 +34,7 @@ cp logging.json.sample logging.json
 poetry run update --init --yes
 
 # Installer Tor
-sudo apt install tor -y
+sudo apt install tor dbus-x11 -y
 
 # Cloner et configurer pystemon
 cd /home/$username/ail-framework/
