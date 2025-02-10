@@ -3,7 +3,6 @@
 # Ouvrir le premier terminal et exécuter les commandes
 gnome-terminal -- bash -c "
 cd ~/ail-framework/;
-. ./AILENV/bin/activate;
 cd bin;
 ./LAUNCH.sh -l;
 ./LAUNCH.sh -f;
@@ -17,7 +16,6 @@ bash" &
 gnome-terminal -- bash -c "
 sleep 60
 cd ~/ail-framework/;
-. ./AILENV/bin/activate;
 cd bin/importer;
 ./PystemonImporter.py;
 bash"
