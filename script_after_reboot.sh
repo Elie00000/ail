@@ -22,7 +22,7 @@ git clone https://github.com/ail-project/lacus.git /home/$username/ail-framework
 cd /home/$username/ail-framework/bin/crawlers/lacus
 poetry install 
 poetry run playwright install-deps
-apt install ffmpeg libavcodec-extra
+apt install ffmpeg libavcodec-extra -y
 # Configurer LACUS_HOME
 echo LACUS_HOME="`pwd`" >> .env
 
@@ -31,7 +31,7 @@ cd /home/$username/ail-framework/bin/crawlers/lacus/config
 cp logging.json.sample logging.json
 
 # Mettre à jour les dépendances avec Poetry
-poetry run update --init
+poetry run update --init --yes
 
 # Installer Tor
 sudo apt install tor -y
