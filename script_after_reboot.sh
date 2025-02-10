@@ -20,10 +20,9 @@ cd ..
 # Cloner et installer lacus
 git clone https://github.com/ail-project/lacus.git /home/$username/ail-framework/bin/crawlers/lacus
 cd /home/$username/ail-framework/bin/crawlers/lacus
-poetry install
-poetry shell
-playwright install-deps
-
+poetry install 
+poetry run playwright install-deps
+apt install ffmpeg libavcodec-extra
 # Configurer LACUS_HOME
 echo LACUS_HOME="`pwd`" >> .env
 
