@@ -26,14 +26,12 @@ else
   echo "Le répertoire AILENV n'a pas été trouvé. Veuillez vérifier l'installation."
   exit 1
 fi
-. ./home/$username/ail-framework/AILENV/bin/activate
 # Naviguer dans le répertoire bin et lancer AIL
 cd /home/$username/ail-framework/bin
 ./LAUNCH.sh -l
 sleep 180
 ./LAUNCH.sh -k
 
-apt install git build-essential tcl pipx -y
 # Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
