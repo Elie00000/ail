@@ -26,7 +26,7 @@ else
   echo "Le répertoire AILENV n'a pas été trouvé. Veuillez vérifier l'installation."
   exit 1
 fi
-
+. ./home/$username/ail-framework/AILENV/bin/activate
 # Naviguer dans le répertoire bin et lancer AIL
 cd /home/$username/ail-framework/bin
 ./LAUNCH.sh -l
