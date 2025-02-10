@@ -3,7 +3,6 @@
 # Trouver le nom de l'utilisateur non-root
 username=$(logname)
 
-. ./home/$username/ail-framework/AILENV/bin/activate
 # Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
