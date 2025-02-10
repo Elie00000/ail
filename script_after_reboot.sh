@@ -38,7 +38,7 @@ sudo apt install tor -y
 
 # Cloner et configurer pystemon
 cd /home/$username/ail-framework/
-git clone https://github.com/cvandelas/pystemon.git /home/$username/ail-framework/pystemon
+git clone https://github.com/Elie00000/pystemon.git /home/$username/ail-framework/pystemon
 cd /home/$username/ail-framework/pystemon
 pip3 install -r requirements.txt
 sed -i "s|dir = /home/pystemon/pystemon|dir = /home/$username/ail-framework/pystemon|" /home/$username/ail-framework/configs/core.cfg
