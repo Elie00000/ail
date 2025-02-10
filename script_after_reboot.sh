@@ -1,44 +1,40 @@
 #!/bin/bash
 
-cd ~/ail-framework/crawler
+# Trouver le nom de l'utilisateur non-root
+username=$(logname)
+
+# Passer en root
+sudo su
+
+# Mettre à jour le système
+apt update && apt full-upgrade -y
+
+# Installer les paquets nécessaires
+apt install git build-essential tcl pipx -y
+
+# Cloner le dépôt ail-framework
+git clone https://github.com/ail-project/ail-framework.git /home/$username/ail-framework
+cd /home/$username/ail-framework
+
+# Installer les dépendances
+./installing_deps.sh
+
+# Vérifier si le répertoire AILENV est présent et activer l'environnement virtuel
+if [ -d "/home/$username/ail-framework/AILENV/bin" ]; then
+  . /home/$username/ail-framework/AILENV/bin/activate
+else
+  echo "Le répertoire AILENV n'a pas été trouvé. Veuillez vérifier l'installation."
+  exit 1
+fi
+
+# Naviguer dans le répertoire bin et lancer AIL
+cd /home/$username/ail-framework/bin
+./LAUNCH.sh -l
+sleep 180
+./LAUNCH.sh -k
 
 # Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
-# Installer Poetry
-pipx install poetry
-pipx ensurepath
-
-# Cloner et préparer valkey
-git clone https://github.com/valkey-io/valkey.git
-cd valkey
-git checkout 7.2
-make
-cd ..
-
-# Cloner et installer lacus
-git clone https://github.com/ail-project/lacus.git
-cd lacus
-poetry install
-poetry shell
-poetry run playwright install-deps
-
-# Configurer LACUS_HOME
-echo LACUS_HOME="`pwd`" >> .env
-
-# Copier le fichier de configuration de logging
-cd lacus/config
-cp logging.json.sample logging.json
-
-# Mettre à jour les dépendances avec Poetry
-poetry run update --init
-
-# Installer Tor
-sudo apt install tor dbus-x11 -y
-
-# Cloner et configurer pystemon
-cd ~/ail-framework/
-git clone https://github.com/Elie00000/pystemon.git
-cd ./configs/
-
-
+# Redémarrer le système
+reboot
