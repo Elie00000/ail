@@ -33,6 +33,7 @@ cd /home/$username/ail-framework/bin
 sleep 180
 ./LAUNCH.sh -k
 
+apt install git build-essential tcl pipx -y
 # Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
