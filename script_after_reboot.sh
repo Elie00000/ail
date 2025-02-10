@@ -3,6 +3,7 @@
 # Trouver le nom de l'utilisateur non-root
 username=$(logname)
 
+. ./home/$username/ail-framework/AILENV/bin/activate
 # Assurer que le chemin de pipx est configuré correctement
 pipx ensurepath
 
@@ -11,15 +12,15 @@ pipx install poetry
 pipx ensurepath
 
 # Cloner et préparer valkey
-git clone https://github.com/valkey-io/valkey.git /home/$username/valkey
-cd /home/$username/valkey
+git clone https://github.com/valkey-io/valkey.git /home/$username/ail-framework/bin/crawlers/valkey
+cd /home/$username/ail-framework/bin/crawlers/valkey
 git checkout 7.2
 make
 cd ..
 
 # Cloner et installer lacus
-git clone https://github.com/ail-project/lacus.git /home/$username/lacus
-cd /home/$username/lacus
+git clone https://github.com/ail-project/lacus.git /home/$username/ail-framework/bin/crawlers/lacus
+cd /home/$username/ail-framework/bin/crawlers/lacus
 poetry install
 poetry shell
 playwright install-deps
@@ -28,7 +29,7 @@ playwright install-deps
 echo LACUS_HOME="`pwd`" >> .env
 
 # Copier le fichier de configuration de logging
-cd /home/$username/lacus/config
+cd /home/$username/ail-framework/bin/crawlers/lacus/config
 cp logging.json.sample logging.json
 
 # Mettre à jour les dépendances avec Poetry
